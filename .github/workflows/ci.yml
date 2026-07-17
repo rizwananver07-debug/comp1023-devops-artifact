@@ -1,0 +1,14 @@
+on:
+  push:
+  pull_request:
+
+jobs:
+  run-script:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repository
+        run: actions/checkout@v4
+
+      - name: Check Artifact
+        shell: cmd
+        run: check_artifact.cmd
