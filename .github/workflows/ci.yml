@@ -6,9 +6,9 @@ jobs:
   run-script:
     runs-on: windows-latest
     steps:
-      - name: Checkout Repository
-        run: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Check Artifact
+      - name: Check artifact
         shell: cmd
         run: check_artifact.cmd
