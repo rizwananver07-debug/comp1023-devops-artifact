@@ -11,4 +11,4 @@ jobs:
 
       - name: Check artifact
         shell: cmd
-        run: check_artifact.cmd
+        run: scripts/check_artifact.cmd
