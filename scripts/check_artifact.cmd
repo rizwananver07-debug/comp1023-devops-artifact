@@ -1,12 +1,19 @@
-@echo off
-set FILE=artifact\message.txt
+name: DevOps Check
 
-findstr /C:"DevOps" "%FILE%" >nul
+on:
+  push:
+  pull_request:
 
-IF %ERRORLEVEL% EQU 0 (
-  echo Artifact check passed.
-  exit /b 0
-) ELSE (
-  echo Artifact check failed.
-  exit /b 1
-)
+jobs:
+  artifact-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t shipit .
+
+      - name: Run Docker container
+        run: docker run --rm shipit
